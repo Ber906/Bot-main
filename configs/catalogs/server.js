@@ -19,7 +19,7 @@ app.get('/tiktokdl/api', async (req, res) => {
   }
 })
 
-console.log(`🟢 TiktokDL Launch, App is listening on port 10000`));
+console.log(`🟢 TiktokDL Launch, App is listening on port 10000`);
 
 function startBot(message) {
     (message) ? logger(message, "starting") : "";
