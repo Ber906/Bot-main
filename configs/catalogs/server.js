@@ -2,17 +2,10 @@ console.clear();
 const { spawn } = require("child_process");
 const chalk = require('chalk');
 const logger = require("./system-settings/console/console-logger.js");
-const express = require('express');
 const path = require('path');
 const axios = require("axios");
-const app = express();
-const port = process.env.PORT || 80;
 
-app.use(express.static('html'));
-
-app.get('/', (req, res) => res.sendFile(__dirname+'/html/index.html'));
-
-console.log(`🟢 App is listening on port ${port}`);
+console.log(`🟢 App is listening on port 10000`);
 
 function startBot(message) {
     (message) ? logger(message, "starting") : "";
