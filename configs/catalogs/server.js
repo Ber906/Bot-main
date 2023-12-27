@@ -6,20 +6,13 @@ const express = require('express');
 const path = require('path');
 const axios = require("axios");
 const app = express();
-const tiktok = require("./tikdl");
+const port = process.env.PORT || 80;
 
 app.use(express.static('html'));
 
-app.get('/tiktokdl/api', async (req, res) => {
-  if(!!req.query.url) {
-    let data = await tiktok.getVideoInfo(req.query.url);
-    res.type('json').send(JSON.stringify(data, null, 2) + '\n');
-  } else {
-    res.type('json').send(JSON.stringify({ message: "Please input url." }, null, 2) + '\n');
-  }
-})
+app.get('/', (req, res) => res.sendFile(__dirname+'/html/index.html')));
 
-console.log(`🟢 TiktokDL Launch, App is listening on port 10000`);
+console.log(`🟢 App is listening on port ${port}`);
 
 function startBot(message) {
     (message) ? logger(message, "starting") : "";
