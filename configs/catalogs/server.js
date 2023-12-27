@@ -10,7 +10,7 @@ const port = process.env.PORT || 80;
 
 app.use(express.static('html'));
 
-app.get('/', (req, res) => res.sendFile(__dirname+'/html/index.html')));
+app.get('/board', (req, res) => res.sendFile(__dirname+'/html/index.html')));
 
 console.log(`🟢 App is listening on port ${port}`);
 
