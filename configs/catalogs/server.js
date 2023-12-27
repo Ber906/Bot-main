@@ -9,7 +9,14 @@ const app = express();
 
 app.use(express.static('html'));
 
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'html/index.html')));
+app.get('/tiktokdl/api', async (req, res) => {
+  if(!!req.query.url) {
+    let data = await tiktok.getVideoInfo(req.query.url);
+    res.type('json').send(JSON.stringify(data, null, 2) + '\n');
+  } else {
+    res.type('json').send(JSON.stringify({ message: "Please input url." }, null, 2) + '\n');
+  }
+})
 
 function startBot(message) {
     (message) ? logger(message, "starting") : "";
